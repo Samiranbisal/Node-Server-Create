@@ -1,8 +1,18 @@
 const http = require("http");
 
 const sp = http.createServer((req, resp) => {
-  console.log("Hello Every One");
-  resp.end("Hii Bro");
+  switch (req.url) {
+    case "/":
+      resp.end("homePage");
+      break;
+    case "/about":
+      resp.end("aboutPage");
+      break;
+    default:
+      resp.end("404 Not Found");
+  }
+
+  // resp.end("Hii Bro");
 });
 
 sp.listen(8000, () => {
